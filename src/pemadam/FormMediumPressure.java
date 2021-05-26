@@ -20,7 +20,7 @@ import javax.swing.table.TableModel;
  *
  * @author raz
  */
-public class FormHighPressure extends javax.swing.JFrame {
+public class FormMediumPressure extends javax.swing.JFrame {
     DefaultTableModel model;
     
     // variable untuk menampung nilai baris yang diselect
@@ -29,7 +29,7 @@ public class FormHighPressure extends javax.swing.JFrame {
     /**
      * Creates new form FormPeralatan
      */
-    public FormHighPressure() {
+    public FormMediumPressure() {
         initComponents();
         
         // Biar Ketengah
@@ -49,7 +49,7 @@ public class FormHighPressure extends javax.swing.JFrame {
             
             // mengambil hasil dari eksekusi query, dengan menggabungkan table groupa, groupb, dan groupc
             ResultSet rs = c.createStatement().executeQuery(
-                "SELECT * FROM (SELECT * FROM groupa UNION ALL SELECT * FROM groupb UNION ALL SELECT * FROM groupc) AS a WHERE jenis = 'HIGH PRESSURE'"
+                "SELECT * FROM (SELECT * FROM groupa UNION ALL SELECT * FROM groupb UNION ALL SELECT * FROM groupc) AS a WHERE jenis = 'MEDIUM PRESSURE'"
             );
             
             // menghapus data yang ada di table output
@@ -125,7 +125,7 @@ public class FormHighPressure extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 0));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("PENDATAAN PERALATAN UNIT HIGH PRESSURE");
+        jLabel6.setText("PENDATAAN PERALATAN UNIT MEDIUM PRESSURE");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -425,7 +425,7 @@ public class FormHighPressure extends javax.swing.JFrame {
             }
             
             // membuat statement yang di amankan
-            PreparedStatement ps = c.prepareStatement("INSERT INTO " + table + " VALUES (null, ?, ?, ?, ?, ?, ?, ?, 'HIGH PRESSURE')");
+            PreparedStatement ps = c.prepareStatement("INSERT INTO " + table + " VALUES (null, ?, ?, ?, ?, ?, ?, ?, 'MEDIUM PRESSURE')");
             
             // mengisi nilai statement sesuai urutan
             ps.setString(1, nrk);
@@ -620,7 +620,7 @@ public class FormHighPressure extends javax.swing.JFrame {
         try {
             Connection c = Koneksi.getKoneksi();
             
-            PreparedStatement ps = c.prepareStatement("SELECT * FROM (SELECT * FROM groupa UNION ALL SELECT * FROM groupb UNION ALL SELECT * FROM groupc) AS a WHERE jenis = 'HIGH PRESSURE' AND (idperalatan LIKE ? OR namaperalatan LIKE ?)");
+            PreparedStatement ps = c.prepareStatement("SELECT * FROM (SELECT * FROM groupa UNION ALL SELECT * FROM groupb UNION ALL SELECT * FROM groupc) AS a WHERE jenis = 'MEDIUM PRESSURE' AND (idperalatan LIKE ? OR namaperalatan LIKE ?)");
             
             ps.setString(1, cari);
             ps.setString(2, cari);
@@ -645,7 +645,7 @@ public class FormHighPressure extends javax.swing.JFrame {
             
             model.fireTableDataChanged();
         } catch (SQLException ex) {
-            Logger.getLogger(FormHighPressure.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FormMediumPressure.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_txtCariKeyReleased
 
@@ -660,7 +660,6 @@ public class FormHighPressure extends javax.swing.JFrame {
             ps.setString(1, idperalatan);
             
             ResultSet rs = ps.executeQuery();
-            
             if (rs.next()) {
                 txtNamaPeralatan.setText(rs.getString("namaperalatan"));
             }
@@ -707,21 +706,23 @@ public class FormHighPressure extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormHighPressure.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormMediumPressure.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormHighPressure.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormMediumPressure.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormHighPressure.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormMediumPressure.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormHighPressure.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormMediumPressure.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormHighPressure().setVisible(true);
+                new FormMediumPressure().setVisible(true);
             }
         });
     }
