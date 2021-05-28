@@ -29,7 +29,7 @@ CREATE TABLE `barangmasuk` (
   `tanggal` date NOT NULL,
   `jumlah` varchar(5) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,6 +38,7 @@ CREATE TABLE `barangmasuk` (
 
 LOCK TABLES `barangmasuk` WRITE;
 /*!40000 ALTER TABLE `barangmasuk` DISABLE KEYS */;
+INSERT INTO `barangmasuk` VALUES (1,'001','noozle 1,5\"','2021-05-29','10');
 /*!40000 ALTER TABLE `barangmasuk` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,8 +59,9 @@ CREATE TABLE `groupa` (
   `kondisi` varchar(10) NOT NULL DEFAULT '',
   `keterangan` varchar(100) NOT NULL DEFAULT '',
   `jenis` varchar(20) NOT NULL,
+  `tanggal` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,7 +70,7 @@ CREATE TABLE `groupa` (
 
 LOCK TABLES `groupa` WRITE;
 /*!40000 ALTER TABLE `groupa` DISABLE KEYS */;
-INSERT INTO `groupa` VALUES (2,'180438','friska ramadhan','A','002','nozle','Baik','baik','HIGH PRESSURE'),(3,'180467','anto','B','001','nozle 1,5\"','Baik','siap tempur','HIGH PRESSURE'),(5,'180675','umar','A','003','selang2,5\"','Baik','siap tempur','HIGH PRESSURE'),(6,'180438','friska ramadehan','A','001','nozle 1,5\"','Baik','siap tempur','HIGH PRESSURE');
+INSERT INTO `groupa` VALUES (2,'180438','friska ramadhan','A','002','nozle','Baik','baik','HIGH PRESSURE','0000-00-00'),(3,'180467','anto','B','001','nozle 1,5\"','Baik','siap tempur','HIGH PRESSURE','0000-00-00'),(5,'180675','umar','A','003','selang2,5\"','Baik','siap tempur','HIGH PRESSURE','0000-00-00'),(6,'180438','friska ramadehan','A','001','nozle 1,5\"','Baik','siap tempur','HIGH PRESSURE','0000-00-00'),(7,'180438','Friska Ramadhan','A','001','noozle 1,5\"','Baik','Siap','HIGH PRESSURE','2021-05-29');
 /*!40000 ALTER TABLE `groupa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -89,6 +91,7 @@ CREATE TABLE `groupb` (
   `kondisi` varchar(10) NOT NULL DEFAULT '',
   `keterangan` varchar(100) NOT NULL DEFAULT '',
   `jenis` varchar(20) NOT NULL,
+  `tanggal` date NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -99,7 +102,7 @@ CREATE TABLE `groupb` (
 
 LOCK TABLES `groupb` WRITE;
 /*!40000 ALTER TABLE `groupb` DISABLE KEYS */;
-INSERT INTO `groupb` VALUES (1,'180435','arik','B','001','nozle 1,5\"','Baik','siap tempur','HIGH PRESSURE');
+INSERT INTO `groupb` VALUES (1,'180435','arik','B','001','nozle 1,5\"','Baik','siap tempur','HIGH PRESSURE','0000-00-00');
 /*!40000 ALTER TABLE `groupb` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -120,6 +123,7 @@ CREATE TABLE `groupc` (
   `kondisi` varchar(10) NOT NULL DEFAULT '',
   `keterangan` varchar(100) NOT NULL DEFAULT '',
   `jenis` varchar(20) NOT NULL,
+  `tanggal` date NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -130,7 +134,7 @@ CREATE TABLE `groupc` (
 
 LOCK TABLES `groupc` WRITE;
 /*!40000 ALTER TABLE `groupc` DISABLE KEYS */;
-INSERT INTO `groupc` VALUES (4,'180498','ali','C','001','nozle1,5\"','buruk','buruk','HIGH PRESSURE'),(5,'189762','Ilham Nur Alamsyah','C','001','noozle 1,5\"','Baik','Mantap','MEDIUM PRESSURE'),(6,'189762','Ilham Nur Alamsyah','C','002','nozzle 1.5\" a','Baik','Bagus','PERALATAN MASYARAKAT');
+INSERT INTO `groupc` VALUES (4,'180498','ali','C','001','nozle1,5\"','buruk','buruk','HIGH PRESSURE','0000-00-00'),(5,'189762','Ilham Nur Alamsyah','C','001','noozle 1,5\"','Baik','Mantap','MEDIUM PRESSURE','0000-00-00'),(6,'189762','Ilham Nur Alamsyah','C','002','nozzle 1.5\" a','Baik','Bagus','PERALATAN MASYARAKAT','0000-00-00');
 /*!40000 ALTER TABLE `groupc` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -226,4 +230,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-26 23:13:11
+-- Dump completed on 2021-05-29  1:33:19
