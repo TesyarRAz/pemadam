@@ -425,7 +425,7 @@ public class FormLightPressure extends javax.swing.JFrame {
             }
             
             // membuat statement yang di amankan
-            PreparedStatement ps = c.prepareStatement("INSERT INTO " + table + " VALUES (null, ?, ?, ?, ?, ?, ?, ?, 'LIGHT PRESSURE')");
+            PreparedStatement ps = c.prepareStatement("INSERT INTO " + table + " VALUES (null, ?, ?, ?, ?, ?, ?, ?, 'LIGHT PRESSURE', now())");
             
             // mengisi nilai statement sesuai urutan
             ps.setString(1, nrk);

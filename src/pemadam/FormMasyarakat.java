@@ -425,7 +425,7 @@ public class FormMasyarakat extends javax.swing.JFrame {
             }
             
             // membuat statement yang di amankan
-            PreparedStatement ps = c.prepareStatement("INSERT INTO " + table + " VALUES (null, ?, ?, ?, ?, ?, ?, ?, 'PERALATAN MASYARAKAT')");
+            PreparedStatement ps = c.prepareStatement("INSERT INTO " + table + " VALUES (null, ?, ?, ?, ?, ?, ?, ?, 'PERALATAN MASYARAKAT', now())");
             
             // mengisi nilai statement sesuai urutan
             ps.setString(1, nrk);

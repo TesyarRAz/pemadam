@@ -12,10 +12,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -48,6 +56,16 @@ public class FormBarangMasuk extends javax.swing.JFrame {
         
         txtTanggal.setDateToToday();
         txtTanggal.setSettings(settings);
+        
+        DatePickerSettings settingsB = new DatePickerSettings();
+        settingsB.setFormatForDatesCommonEra(DateTimeFormatter.ofPattern("eeee, d MMMM y"));
+        txtTanggalAwal.setDateToToday();
+        txtTanggalAwal.setSettings(settingsB);
+        
+        DatePickerSettings settingsC = new DatePickerSettings();
+        settingsC.setFormatForDatesCommonEra(DateTimeFormatter.ofPattern("eeee, d MMMM y"));
+        txtTanggalAkhir.setDateToToday();
+        txtTanggalAkhir.setSettings(settingsC);
     }
     
     private void loadTable() {
@@ -90,6 +108,13 @@ public class FormBarangMasuk extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        dialogLaporan = new javax.swing.JDialog();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        txtTanggalAwal = new com.github.lgooddatepicker.components.DatePicker();
+        jLabel8 = new javax.swing.JLabel();
+        txtTanggalAkhir = new com.github.lgooddatepicker.components.DatePicker();
+        jButton2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -110,6 +135,76 @@ public class FormBarangMasuk extends javax.swing.JFrame {
         table = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         txtTanggal = new com.github.lgooddatepicker.components.DatePicker();
+
+        dialogLaporan.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        dialogLaporan.setResizable(false);
+        dialogLaporan.setSize(new java.awt.Dimension(500, 150));
+
+        jPanel3.setBackground(new java.awt.Color(0, 0, 153));
+        jPanel3.setPreferredSize(new java.awt.Dimension(300, 100));
+
+        jLabel7.setText("Tanggal Awal");
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel8.setText("Tanggal Akhir");
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+
+        jButton2.setText("Cetak");
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setForeground(new java.awt.Color(0, 0, 0));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(txtTanggalAwal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addComponent(txtTanggalAkhir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtTanggalAkhir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtTanggalAwal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout dialogLaporanLayout = new javax.swing.GroupLayout(dialogLaporan.getContentPane());
+        dialogLaporan.getContentPane().setLayout(dialogLaporanLayout);
+        dialogLaporanLayout.setHorizontalGroup(
+            dialogLaporanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 536, Short.MAX_VALUE)
+        );
+        dialogLaporanLayout.setVerticalGroup(
+            dialogLaporanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -208,6 +303,11 @@ public class FormBarangMasuk extends javax.swing.JFrame {
         jButton4.setText("LAPORAN");
         jButton4.setBackground(new java.awt.Color(255, 255, 255));
         jButton4.setForeground(new java.awt.Color(0, 0, 0));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         table.setBackground(new java.awt.Color(255, 255, 255));
         table.setForeground(new java.awt.Color(0, 0, 0));
@@ -540,6 +640,31 @@ public class FormBarangMasuk extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtIdPeralatanActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        dialogLaporan.setLocationRelativeTo(this);
+        dialogLaporan.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String tanggalAwal = txtTanggalAwal.getDate().format(DateTimeFormatter.ofPattern("y-M-d"));
+        String tanggalAkhir = txtTanggalAkhir.getDate().format(DateTimeFormatter.ofPattern("y-M-d"));
+        
+        try {
+            HashMap<String, Object> parameters = new HashMap<>();
+            parameters.put("gambar", "report/invoice_logo.png");
+            parameters.put("tanggal_awal", tanggalAwal);
+            parameters.put("tanggal_akhir", tanggalAkhir);
+            
+            JasperDesign jasperDesign = JRXmlLoader.load(getClass().getClassLoader().getResourceAsStream("report/BarangMasuk.jrxml"));
+            JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, Koneksi.getKoneksi());
+            
+            JasperViewer.viewReport(jasperPrint, false);
+        } catch (Exception ex) {
+            Logger.getLogger(FormPegawai.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -582,7 +707,9 @@ public class FormBarangMasuk extends javax.swing.JFrame {
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnHapus;
     private javax.swing.JButton btnSimpan;
+    private javax.swing.JDialog dialogLaporan;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -590,8 +717,11 @@ public class FormBarangMasuk extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable table;
     private javax.swing.JTextField txtCari;
@@ -599,5 +729,7 @@ public class FormBarangMasuk extends javax.swing.JFrame {
     private javax.swing.JTextField txtJumlah;
     private javax.swing.JTextField txtNama;
     private com.github.lgooddatepicker.components.DatePicker txtTanggal;
+    private com.github.lgooddatepicker.components.DatePicker txtTanggalAkhir;
+    private com.github.lgooddatepicker.components.DatePicker txtTanggalAwal;
     // End of variables declaration//GEN-END:variables
 }

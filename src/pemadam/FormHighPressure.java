@@ -425,7 +425,7 @@ public class FormHighPressure extends javax.swing.JFrame {
             }
             
             // membuat statement yang di amankan
-            PreparedStatement ps = c.prepareStatement("INSERT INTO " + table + " VALUES (null, ?, ?, ?, ?, ?, ?, ?, 'HIGH PRESSURE')");
+            PreparedStatement ps = c.prepareStatement("INSERT INTO " + table + " VALUES (null, ?, ?, ?, ?, ?, ?, ?, 'HIGH PRESSURE', now())");
             
             // mengisi nilai statement sesuai urutan
             ps.setString(1, nrk);

@@ -425,7 +425,7 @@ public class FormGudang extends javax.swing.JFrame {
             }
             
             // membuat statement yang di amankan
-            PreparedStatement ps = c.prepareStatement("INSERT INTO " + table + " VALUES (null, ?, ?, ?, ?, ?, ?, ?, 'PERALATAN GUDANG')");
+            PreparedStatement ps = c.prepareStatement("INSERT INTO " + table + " VALUES (null, ?, ?, ?, ?, ?, ?, ?, 'PERALATAN GUDANG', now())");
             
             // mengisi nilai statement sesuai urutan
             ps.setString(1, nrk);
