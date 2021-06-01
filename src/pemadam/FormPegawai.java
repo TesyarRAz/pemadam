@@ -619,7 +619,7 @@ public class FormPegawai extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         try {
             HashMap<String, Object> parameters = new HashMap<>();
-            parameters.put("gambar", "report/invoice_logo.png");
+            parameters.put("gambar", "report/cop.png");
             
             JasperDesign jasperDesign = JRXmlLoader.load(getClass().getClassLoader().getResourceAsStream("report/Pegawai.jrxml"));
             JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);

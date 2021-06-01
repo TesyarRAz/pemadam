@@ -649,11 +649,16 @@ public class FormBarangMasuk extends javax.swing.JFrame {
         String tanggalAwal = txtTanggalAwal.getDate().format(DateTimeFormatter.ofPattern("y-M-d"));
         String tanggalAkhir = txtTanggalAkhir.getDate().format(DateTimeFormatter.ofPattern("y-M-d"));
         
+        String tanggalAwalString = txtTanggalAwal.getDate().format(DateTimeFormatter.ofPattern("eeee, d MMMM y"));
+        String tanggalAkhirString = txtTanggalAkhir.getDate().format(DateTimeFormatter.ofPattern("eeee, d MMMM y"));
+        
         try {
             HashMap<String, Object> parameters = new HashMap<>();
-            parameters.put("gambar", "report/invoice_logo.png");
+            parameters.put("gambar", "report/cop.png");
             parameters.put("tanggal_awal", tanggalAwal);
             parameters.put("tanggal_akhir", tanggalAkhir);
+            parameters.put("tanggal_awal_string", tanggalAwalString);
+            parameters.put("tanggal_akhir_string", tanggalAkhirString);
             
             JasperDesign jasperDesign = JRXmlLoader.load(getClass().getClassLoader().getResourceAsStream("report/BarangMasuk.jrxml"));
             JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);

@@ -144,7 +144,7 @@ public class FormLaporan extends javax.swing.JFrame {
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         try {
             HashMap<String, Object> parameters = new HashMap<>();
-            parameters.put("gambar", "report/invoice_logo.png");
+            parameters.put("gambar", "report/cop.png");
             
             JasperDesign jasperDesign = JRXmlLoader.load(getClass().getClassLoader().getResourceAsStream("report/PengecekanBarang.jrxml"));
             JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
