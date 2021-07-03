@@ -546,6 +546,8 @@ public class FormPegawai extends javax.swing.JFrame {
                 } else {
                     JOptionPane.showMessageDialog(this, "Gagal hapus pegawai");
                 }
+
+		loadTable();
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage());
             }
@@ -619,7 +621,8 @@ public class FormPegawai extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         try {
             HashMap<String, Object> parameters = new HashMap<>();
-            parameters.put("gambar", "report/cop.png");
+            // Ambil lokasi berkas, melewati root folder run nya
+            parameters.put("gambar", getClass().getClassLoader().getResource("report/cop.png").toExternalForm());
             
             JasperDesign jasperDesign = JRXmlLoader.load(getClass().getClassLoader().getResourceAsStream("report/Pegawai.jrxml"));
             JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);

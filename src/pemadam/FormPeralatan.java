@@ -370,7 +370,7 @@ public class FormPeralatan extends javax.swing.JFrame {
                 Connection c = Koneksi.getKoneksi();
                 
                 // membuat statement yang diamankan
-                PreparedStatement ps = c.prepareStatement("DELETE peralatan WHERE idperalatan = ?");
+                PreparedStatement ps = c.prepareStatement("DELETE FROM peralatan WHERE idperalatan = ?");
             
                 // mengisi nilai statement sesuai urutan, lalu mengisi nya dengan nilai dari baris yang dipilih,
                 // diisi dengan idperalatan yang ada dikolom 0
@@ -382,6 +382,8 @@ public class FormPeralatan extends javax.swing.JFrame {
                 } else {
                     JOptionPane.showMessageDialog(this, "Gagal hapus peralatan");
                 }
+
+		loadTable();
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage());
             }

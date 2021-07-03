@@ -496,7 +496,7 @@ public class FormPengadaanBarang extends javax.swing.JFrame {
                 Connection c = Koneksi.getKoneksi();
                 
                 // membuat statement yang diamankan
-                PreparedStatement ps = c.prepareStatement("DELETE pengadaanbarang WHERE id = ?");
+                PreparedStatement ps = c.prepareStatement("DELETE FROM pengadaanbarang WHERE id = ?");
             
                 // mengisi nilai statement sesuai urutan, lalu mengisi nya dengan nilai dari baris yang dipilih,
                 // diisi dengan idperalatan yang ada dikolom 0
@@ -508,6 +508,8 @@ public class FormPengadaanBarang extends javax.swing.JFrame {
                 } else {
                     JOptionPane.showMessageDialog(this, "Gagal hapus pengadaanbarang");
                 }
+
+		loadTable();
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage());
             }

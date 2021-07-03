@@ -482,7 +482,7 @@ public class FormLightPressure extends javax.swing.JFrame {
                         break;
                 }
                 // membuat statement yang diamankan
-                PreparedStatement ps = c.prepareStatement("DELETE " + table + " WHERE id = ?");
+                PreparedStatement ps = c.prepareStatement("DELETE FROM " + table + " WHERE id = ?");
             
                 // mengisi nilai statement sesuai urutan, lalu mengisi nya dengan nilai dari baris yang dipilih,
                 // diisi dengan id yang ada dikolom 0
@@ -494,6 +494,7 @@ public class FormLightPressure extends javax.swing.JFrame {
                 } else {
                     JOptionPane.showMessageDialog(this, "Gagal hapus");
                 }
+		loadTable();
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage());
             }
